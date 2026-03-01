@@ -12,7 +12,8 @@
     "axios": "^1.13.6",
     "cors": "*",
     "dotenv": "^17.3.1",
-    "express": "*"
+    "express": "*",
+    "typescript": "*"
   },
   "devDependencies": {
     "@types/cors": "*",
