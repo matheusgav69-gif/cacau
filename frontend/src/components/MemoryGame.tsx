@@ -11,7 +11,6 @@ interface Card {
   isMatched: boolean;
 }
 
-const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL || "http://localhost:4000";
 const RECOMMENDED_TIME_SECONDS = 90;
 
 interface MemoryGameProps {
@@ -38,7 +37,7 @@ export function MemoryGame({ onRedeem }: MemoryGameProps) {
     setError(null);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/products`);
+      const res = await fetch(`/api/products`);
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const products: Product[] = await res.json();
 

@@ -371,16 +371,23 @@ export function OffersPage({ onBack, onCheckout }: OffersPageProps) {
         >
           <span>Total:&nbsp;<strong>{formatPrice(total)}</strong></span>
           <button
-            onClick={() => onCheckout && onCheckout()}
+            onClick={() => {
+              if (Object.keys(cart).length === 0) {
+                setToastMsg("Adicione itens ao carrinho para continuar");
+              } else {
+                onCheckout && onCheckout();
+              }
+            }}
             disabled={Object.keys(cart).length === 0}
             style={{
               padding: "0.65rem 1.2rem",
-              background: "#8a5a35",
+              background: Object.keys(cart).length === 0 ? "#ccc" : "#8a5a35",
               color: "#fff",
               border: "none",
               borderRadius: 6,
               cursor: Object.keys(cart).length === 0 ? "not-allowed" : "pointer",
               fontWeight: 600,
+              transition: "all 0.3s ease",
             }}
           >
             Finalizar compra
