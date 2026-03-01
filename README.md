@@ -71,3 +71,4 @@ Você pode alterar os produtos ou nomes de arquivos editando `backend/src/data/p
 5. Ao encontrar todos os pares, o usuário vê a mensagem de sucesso e o código de desconto.
 6. A qualquer momento, o botão **"Tentar novamente"** reinicia o jogo (reembaralha e reseta o estado).
 
+# cacau
