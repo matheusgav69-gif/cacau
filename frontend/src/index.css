@@ -1,0 +1,388 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f2ec;
+  color: #3f2515;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+main {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(15, 10, 5, 0.08);
+  border: 1px solid #efe3d4;
+}
+
+h1 {
+  color: #3b2414;
+}
+
+p {
+  color: #5b3a23;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr));
+  gap: 0.75rem;
+  grid-auto-rows: 130px; /* base row height; allows row/col spans */
+}
+
+.memory-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.memory-card--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.memory-card--wide {
+  grid-column: span 2;
+}
+
+.memory-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-footer {
+  width: 100%;
+  margin: 2rem 0 0;
+  padding: 1.75rem 2rem 1.5rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.78);
+  background: #3b2414;
+}
+
+.site-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.site-footer__links li + li {
+  margin-top: 0.35rem;
+}
+
+.site-footer__links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.16);
+  margin-bottom: 0.85rem;
+}
+
+.site-footer__info {
+  line-height: 1.5;
+}
+
+.site-footer__info p {
+  margin: 0.1rem 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.cta-pulse-button {
+  position: relative;
+  overflow: hidden;
+  animation: cta-pulse-scale 1.8s ease-in-out infinite alternate;
+}
+
+.cta-pulse-button::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  border-radius: 999px;
+  border: 0 solid rgba(255, 255, 255, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  animation: cta-pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes cta-pulse-scale {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes cta-pulse-ring {
+  0% {
+    opacity: 0.0;
+    border-width: 0;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 0.55;
+    border-width: 1px;
+  }
+  100% {
+    opacity: 0;
+    border-width: 2px;
+    transform: scale(1.25);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 1.5rem 1rem 1.25rem;
+  }
+
+  main {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    grid-auto-rows: 120px;
+  }
+
+  /* disable large/wide spans on medium screens for better flow */
+  .memory-card--large,
+  .memory-card--wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .site-footer {
+    padding: 1.4rem 1.5rem 1.2rem;
+  }
+}
+
+@keyframes cart-bump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cart-bump {
+  animation: cart-bump 0.6s ease-out;
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 0.75rem 0.5rem 1rem;
+  }
+
+  main {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15, 10, 5, 0.12);
+    border: 1px solid #efe3d4;
+  }
+
+  /* Small screens: 3 columns, smaller cards */
+  .memory-grid {
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    grid-auto-rows: 100px;
+    gap: 0.5rem;
+  }
+
+  /* disable spans on small screens */
+  .memory-card--large,
+  .memory-card--wide {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  /* slightly reduce gap on small screens */
+  .memory-grid {
+    gap: 0.5rem;
+  }
+
+  .site-footer {
+    margin-top: 1.5rem;
+    padding-inline: 1.25rem;
+  }
+}
+
+
+
+/* animation helpers */
+@keyframes cart-bump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cart-bump {
+  animation: cart-bump 0.6s ease-out;
+}
+
+/* spinner animation */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* checkmark animation */
+.checkmark {
+  animation: checkmark-bounce 0.6s ease-out;
+}
+
+@keyframes checkmark-bounce {
+  0% { 
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* drawer slide-in animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  /* cart drawer takes full width on mobile */
+  .cart-drawer {
+    max-width: 100% !important;
+  }
+}
+
+/* toast notification */
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3b2414;
+  color: #fff;
+  padding: 0.75rem 1.2rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-weight: 500;
+  z-index: 999;
+  animation: fade-in-out 2.2s ease forwards;
+}
+
+/* smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* enhanced responsive media queries */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* button hover transitions */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* smooth focus states */
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(138, 90, 53, 0.2);
+}
+
+/* form labels: stack inputs and provide spacing */
+form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+/* ensure inputs take full width */
+form input,
+form select {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Checkout responsive grid */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 4vw, 2rem);
+}
+
+@media (min-width: 1024px) {
+  .checkout-grid {
+    grid-template-columns: 1fr 380px;
+  }
+}
