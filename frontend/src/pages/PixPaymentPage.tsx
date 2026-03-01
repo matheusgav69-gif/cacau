@@ -26,9 +26,8 @@ export function PixPaymentPage({ pixData, onBack }: PixPaymentPageProps) {
       console.log("📡 Verificando status do pagamento...", new Date().toLocaleTimeString());
       
       try {
-        const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL || "http://localhost:4000";
         const response = await fetch(
-          `${API_BASE_URL}/api/payment/status/${pixData.transactionId}`
+          `/api/payment/status/${pixData.transactionId}`
         );
         const result = await response.json();
 

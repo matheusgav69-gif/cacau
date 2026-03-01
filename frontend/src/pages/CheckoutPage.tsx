@@ -1,8 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { PixPaymentPage } from "./PixPaymentPage";
 
-const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL || "http://localhost:4000";
-
 // Formata preço para BRL
 const formatPrice = (value: number) =>
   new Intl.NumberFormat("pt-BR", {
@@ -240,7 +238,7 @@ export function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
       };
 
       // Chamar API de pagamento
-      const response = await fetch(`${API_BASE_URL}/api/payment/create-sale`, {
+      const response = await fetch(`/api/payment/create-sale`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
