@@ -82,12 +82,10 @@ app.get("/api/payment/status/:transactionId", async (req, res) => {
   }
 });
 
-// Para desenvolvimento local
-if (process.env.NODE_ENV !== "production") {
-  app.listen(port, () => {
-    console.log(`Backend rodando na porta ${port}`);
-  });
-}
+// Sempre escutar, independente do ambiente
+app.listen(port, () => {
+  console.log(`Backend rodando na porta ${port}`);
+});
 
 // Para Vercel (serverless)
 export default app;
