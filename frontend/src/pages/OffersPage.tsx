@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import type { Product } from "../types/Product";
 import { Toast } from "../components/Toast";
 
+const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL || "http://localhost:4000";
+
 interface CartItem {
   product: Product;
   qty: number;
@@ -32,8 +34,8 @@ export function OffersPage({ onBack, onCheckout }: OffersPageProps) {
     async function load() {
       try {
         const [resProducts, resOffers] = await Promise.all([
-          fetch("http://localhost:4000/api/products"),
-          fetch("http://localhost:4000/api/offers")
+          fetch(`${API_BASE_URL}/api/products`),
+          fetch(`${API_BASE_URL}/api/offers`)
         ]);
         const products = await resProducts.json();
         const offers = await resOffers.json();

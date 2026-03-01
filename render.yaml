@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: cacau-backend
+    env: node
+    plan: starter
+    branch: main
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BLACKCAT_API_KEY
+        sync: false
+      - key: PORT
+        value: 4000
+
+  - type: static_site
+    name: cacau-frontend
+    plan: starter
+    branch: main
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://cacau-backend.onrender.com
