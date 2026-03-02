@@ -260,52 +260,25 @@ export function MemoryGame({ onRedeem }: MemoryGameProps) {
                     width: "100%",
                     height: "100%",
                     overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "linear-gradient(135deg, #8a5a35, #6b4423)",
                   }}
                 >
-                  <img
-                    src={card.hiddenImageUrl}
-                    alt={card.name}
+                  <svg
+                    viewBox="0 0 200 200"
                     style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      filter: "blur(6px) brightness(0.85)",
-                      transform: "scale(1.05)",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                      background:
-                        "linear-gradient(135deg, rgba(255,255,255,0.35), rgba(250,242,230,0.75))",
-                      color: "#5a2a1b",
-                      fontWeight: 600,
-                      fontSize: "0.76rem",
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
+                      width: "60%",
+                      height: "60%",
+                      fill: "white",
+                      opacity: 0.85,
                     }}
                   >
-                    <span style={{ marginBottom: 4 }}>Clique para revelar</span>
-                    <span
-                      style={{
-                        width: 26,
-                        height: 26,
-                        borderRadius: "999px",
-                        border: "1px solid rgba(90,42,27,0.4)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1rem",
-                      }}
-                    >
-                      ?
-                    </span>
-                  </div>
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="white" strokeWidth="12"/>
+                    <path d="M 70 60 Q 70 40 90 40 Q 110 40 110 55 Q 110 70 85 75 L 115 75 Q 135 75 135 90 Q 135 110 110 115 L 90 115 Q 70 115 70 130 Q 70 145 95 150 Q 115 150 130 140" 
+                          fill="none" stroke="currentColor" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </div>
               )}
             </button>
