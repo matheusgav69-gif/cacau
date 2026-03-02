@@ -263,22 +263,19 @@ export function MemoryGame({ onRedeem }: MemoryGameProps) {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    background: "linear-gradient(135deg, #8a5a35, #6b4423)",
+                    background: "#f5f5f5",
                   }}
                 >
-                  <svg
-                    viewBox="0 0 200 200"
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDTiqSYLx4pHCGiEF1b3M_36UNoha2yyPnx4-iHJ_4pzUETin3"
+                    alt="Cacau Show Logo"
                     style={{
-                      width: "60%",
-                      height: "60%",
-                      fill: "white",
-                      opacity: 0.85,
+                      width: "70%",
+                      height: "70%",
+                      objectFit: "contain",
+                      opacity: 0.9,
                     }}
-                  >
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="white" strokeWidth="12"/>
-                    <path d="M 70 60 Q 70 40 90 40 Q 110 40 110 55 Q 110 70 85 75 L 115 75 Q 135 75 135 90 Q 135 110 110 115 L 90 115 Q 70 115 70 130 Q 70 145 95 150 Q 115 150 130 140" 
-                          fill="none" stroke="currentColor" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  />
                 </div>
               )}
             </button>
